@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'accueil</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1 class="titre">Liste des Films</h1>
+
+    <h2>Groupe 1</h2>
+    <ul>
+        {% for film in films1 %}
+            <li>{{ film.titre }} (Note: {{ film.note_moyenne }}, Votes: {{ film.nombre_votes }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Groupe 2</h2>
+    <ul>
+        {% for film in films2 %}
+            <li>{{ film.titre }} (Note: {{ film.note_moyenne }}, Votes: {{ film.nombre_votes }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Groupe 3</h2>
+    <ul>
+        {% for film in films3 %}
+            <li>{{ film.titre }} (Note: {{ film.note_moyenne }}, Votes: {{ film.nombre_votes }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
