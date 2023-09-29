@@ -1,0 +1,22 @@
+<nav>
+    <div class="logo">
+      <h1>Movies<span>Hub</span></h1>
+    </div>
+    <div class="right">
+      <ul>
+        {% if request.resolver_match.url_name == 'home' %}
+          <li ><a href="{% url 'cluster' %}">Groupes</a></li>
+        {% elif request.resolver_match.url_name == 'cluster' %}
+          <li ><a href="{% url 'home' %}">Home</a></li>
+        {% endif %}
+      </ul>
+     <!-- <button class="signup-signin-button" id="openModalbutton">Sign Up / Sign In</button>-->
+      <button class="signup-signin-button" id="openModalbutton" data-authenticated="{% if user.is_authenticated %}true{% else %}false{% endif %}">
+        {% if user.is_authenticated %}
+            {{ user.username }}
+        {% else %}
+            Sign Up / Sign In
+        {% endif %}
+      </button>
+    </div>
+</nav>

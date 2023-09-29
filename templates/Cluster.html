@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Website</title>
+    <link rel="stylesheet" href="{% static 'cluster.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/partials/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/partials/modal_login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/partials/modal_login_1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/partials/modal_info_film.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/partials/cluster_partial.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/partials/modal_user.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="{% static 'js/partials/modal_login_1.js' %}"></script>
+    <script src="{% static 'js/partials/modal_info_film.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+
+    <section>
+      {% include 'partials/navbar.html' %}
+    </section>
+    <div class="second scrollable-content ">
+
+      {% for cluster in Cluster_data %}
+            <h1 class="cluster-title">Cluster {{ forloop.counter }}</h1>
+            {% include 'partials/cluster_partial.html' with cluster_data=cluster %}
+      {% endfor %}
+      <!-- <h1 class="cluster-title" >Cluster 1</h1>
+      <div class="movies_container" >
+        {% for f in cluster1_films %}
+        <div class="movie"  data-film-id="{{ f.id }}">
+          <div class="movie_details" >
+            <p class="title" >{{f.titre}}</p>
+            <div style="display: flex; align-items: center;" >
+              <p class="quality" >HD</p>
+              <p class="year" >{{f.date_sortie}}</p>
+            </div>
+            <p class="category">
+              {% for g in f.genres.all %}
+               <span>{{g}}</span>
+              {% endfor %}
+            </p>
+            <div class="info">
+              <div class="rate">
+                <i class="fa-solid fa-star"></i>
+                <p>{{f.note_moyenne}}</p>
+              </div>
+              <div class="time">
+                <i class="fa-regular fa-clock"></i>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <img class="movie_img" src="{{f.image}}">
+        </div>
+       {% endfor %}
+      </div>
+
+      <h1 class="cluster-title" >Cluster 2</h1>
+      <div class="movies_container" >
+        {% for f in cluster2_films%}
+        <div class="movie" >
+          <div class="movie_details" >
+            <p class="title" >{{f.titre}}</p>
+            <div style="display: flex; align-items: center;" >
+              <p class="quality" >HD</p>
+              <p class="year" >{{f.date_sortie}}</p>
+            </div>
+            <p class="category">
+              {% for g in f.genres.all %}
+              <span>{{g}}</span>
+              {% endfor %}
+            </p>
+            <div class="info">
+              <div class="rate">
+                <i class="fa-solid fa-star"></i>
+                <p>{{f.note_moyenne}}</p>
+              </div>
+              <div class="time">
+                <i class="fa-regular fa-clock"></i>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <img class="movie_img" src="{{f.image}}">
+        </div>
+        {% endfor %}
+      </div>
+
+      <h1 class="cluster-title" >Cluster 3</h1>
+      <div class="movies_container" >
+        {% for f in cluster3_films%}
+        <div class="movie"  data-film-id="{{ f.id }}" onclick="">
+          <div class="movie_details" >
+            <p class="title" >{{f.titre}}</p>
+            <div style="display: flex; align-items: center;" >
+              <p class="quality" >HD</p>
+              <p class="year" >{{f.date_sortie}}</p>
+            </div>
+            <p class="category">
+              {% for g in f.genres.all %}
+              <span>{{g}}</span>
+              {% endfor %}
+            </p>
+            <div class="info">
+              <div class="rate">
+                <i class="fa-solid fa-star"></i>
+                <p>{{f.note_moyenne}}</p>
+              </div>
+              <div class="time">
+                <i class="fa-regular fa-clock"></i>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <img class="movie_img" src="{{f.image}}">
+        </div>
+        {% endfor %}
+      </div>
+    </div>-->
+
+
+     {% include 'partials/modal_info_film.html' %}
+    
+
+    
+    {% include 'partials/modal_login.html' %}
+    {% include 'partials/modal_login_1.html' %}
+
+    {% include 'partials/modal_user.html' %}
+      
+
+
+    <p class="end">Design By<span><i class="fa-solid fa-face-grin"></i>ImadWX</span></p>
+    
+  </body>
+
+  <script>
+  
+       
+
+
+      
+
+
+
+
+
+
+  </script>
+</html>

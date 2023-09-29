@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+
+
+        <div>
+            <h1>IMAD</h1>
+            <!--<button id="openModalbutton">ouvre</button>-->
+            <div class="bg"></div>
+            <div class="modal">
+                <i class="fa-solid fa-times close " id="closeModalButton" ></i>
+
+                    <div class="modal_container_sec1">
+                        <div class="modal_container_soc">
+                            <img src="./icons8-google-48.png" alt="Google Icon" style="margin-right: 14px; width: 20%;">
+                            <span style="margin-left: 14px;">Google</span>
+                        </div>
+                        <div class="modal_container_soc facebook">
+                            <img src="./icons8-facebook-48.png" alt="Google Icon" style=" margin-right: 14px;width: 20%;">
+                            <span>Facebook</span>
+                        </div>
+                    </div>
+                    <div class="modal_container_or">
+                        <span class="vertical-ligne"></span>
+                        <span>or</span>
+                        <span class="vertical-ligne"></span>
+                    </div>
+                    <div class="modal_container_input">
+                        <input type="text" placeholder="Enter your name"/>
+                        <input type="email" placeholder="Enter your email" />
+                        <input type="password" placeholder="Enter your password">
+                        <input type="password" placeholder="confirm your password"/>
+                        <button type="submit">s'inscrire</button>
+                        <span style="margin-top: 5px;">you have account?<a>Sign in</a></span>
+                    </div>
+
+
+            </div>
+        </div>
+    </body>
+
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+        .modal{
+            z-index: 9999;
+            position: fixed;
+            height: 0%;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            background-color: #fff;
+            border-radius: 10px 10px 0 0;
+            padding:30px ;
+            transition: all ease 0.5s;
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .openModal{
+            height: 70%;
+            display: flex;
+        }
+        
+
+        .bg{
+            z-index: 9998;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        .modal .close{
+            position: absolute;
+            top:3%;
+            left:98%;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .modal_container_sec1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+           /* background-color: blue;*/
+            padding: 40px;
+        }
+
+        .modal_container_soc{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            width: 200px;
+            height: 40px;
+            background-color: #fff;
+            border: 1px solid #ccc; /* Épaisseur de la bordure de 2 pixels */
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+        /* Pour ajouter un effet de survol */
+        .modal_container_soc:hover {
+            border-color: #007bff;/* Couleur de fond lorsque survolé */
+        }
+
+        .modal_container_soc i{
+            margin-right: 15px;
+        }
+
+        .modal_container_or{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .vertical-ligne {
+          width: 2px; /* Largeur de la ligne */
+         height: 100px; /* Hauteur de la ligne */
+         background-color: #000; /* Couleur de la ligne */
+        margin: 0 auto; /* Centrer la ligne horizontalement */
+        }
+
+
+        .modal_container_input{
+             display: flex;
+             align-items: center;
+             flex-direction: column;
+
+        }
+
+        .modal_container_input input{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+         }
+
+         .modal_container_input span a{
+           
+            border-bottom: 1px solid #000;
+            cursor: pointer;
+         }
+          
+         /* Style pour les placeholders des inputs */
+         .modal_container_input input::placeholder {
+                color: #999;
+        }
+
+         /* Style pour les inputs en focus (lorsqu'ils sont sélectionnés) */
+        .modal_container_input input:focus {
+             border-color: #007bff;
+             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Style pour le bouton "S'inscrire" */
+       .modal_container_input button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        /* Style pour le bouton "S'inscrire" au survol */
+        .modal_container_input button[type="submit"]:hover {
+           background-color: #0056b3;
+        }
+
+
+
+
+    </style>
+
+    <script>
+
+    </script>
+</html>

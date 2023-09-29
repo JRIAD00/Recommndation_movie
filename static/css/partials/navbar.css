@@ -1,0 +1,69 @@
+
+
+ nav{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5% 8px 5%;
+  margin-bottom: 20px;
+  background: #171717;
+}
+
+ nav .logo h1{
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+}
+
+ nav .logo h1 span{
+  color: #ffe100;
+  margin-left: 8px;
+  text-decoration: underline;
+}
+ nav .right{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+
+nav ul li.active {
+  background-color: #007bff; /* Couleur de fond pour l'élément actif */
+  color: #fff; /* Couleur du texte pour l'élément actif */
+}
+
+ nav .right ul{
+  list-style: none;
+}
+
+ nav .right ul li{
+  display: inline-block;
+  margin: 0 5px;
+}
+ nav .right ul li a{
+  color: #fff;
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+ nav .right ul li a:hover{
+  color: #ffe100;
+}
+
+/* Style pour le bouton "Sign Up / Sign In" */
+.signup-signin-button {
+background-color: #007bff; /* Couleur de fond bleue */
+color: #fff; /* Couleur du texte blanche */
+border: none; /* Pas de bordure */
+border-radius: 5px; /* Coins arrondis */
+padding: 10px 20px; /* Rembourrage (padding) pour l'intérieur du bouton */
+cursor: pointer; /* Curseur de type main (main pointer) */
+font-size: 16px; /* Taille de la police */
+margin-left: 5px; /* Marge à gauche pour l'espacement par rapport aux liens */
+}
+
+/* Style pour le bouton "Sign Up / Sign In" au survol */
+.signup-signin-button:hover {
+background-color: #0056b3; /* Changement de couleur de fond au survol */
+}

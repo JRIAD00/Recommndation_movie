@@ -1,0 +1,55 @@
+
+
+
+
+<div class="modalContainer_User hideModal_User" >
+    <div class="modal_User" >
+      <i class="fa-solid fa-times close_User " id="closeModalButton_User" ></i>
+      <div class="modal_userInfo" >
+        {%  if  user %}
+        <p class="modal_userName" >{{user.username}}</p>
+        {% endif %}
+        <p class="modal_userEmail" >{{user.email}}</p>
+      </div>
+      <div class="userRec">
+        <h1>Votre recommandation</h1>    
+        <div class="box">
+         {% if recommended_films %}
+          {% for film in recommended_films %}
+          <div class="card" id="card" data-film-title="{{film.titre}}">
+            <div class="details">
+              <div class="left">
+                <p class="name">{{film.titre}}</p>
+                <div class="date_quality">
+                  <p class="quality">HD</p>
+                  <p class="date">{{film.date_sortie}}</p>
+                </div>
+                <p class="category">
+                    {% for g in film.genres.all %}
+                      <span>{{g}}</span>
+                    {% endfor %}
+                </p>
+                <div class="info">
+                  <div class="rate">
+                    <i class="fa-solid fa-star"></i>
+                    <p>{{film.note_moyenne}}</p>
+                  </div>
+                  <div class="time">
+                    <i class="fa-regular fa-clock"></i>
+                    <p>120min</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img src="{{film.image}}">
+          </div>
+          {% endfor%}
+         {% endif %}
+        </div>
+      </div>
+      <div class="modal_logOutContainer" >
+        <a  href="{% url 'logout' %}" class="modal_logOut" >Se déconnecter</a>
+      </div>
+    </div>
+  </div>
+  <!-- --------  --------- -->

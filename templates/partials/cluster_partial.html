@@ -1,0 +1,34 @@
+
+
+
+
+
+<div class="movies_container" >
+    {% for f in cluster_data %}
+    <div class="movie"  data-film-id="{{ f.id }}">
+      <div class="movie_details" >
+        <p class="title" >{{f.titre}}</p>
+        <div style="display: flex; align-items: center;" >
+          <p class="quality" >HD</p>
+          <p class="year" >{{f.date_sortie}}</p>
+        </div>
+        <p class="category">
+          {% for g in f.genres.all %}
+           <span>{{g}}</span>
+          {% endfor %}
+        </p>
+        <div class="info">
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <p>{{f.note_moyenne}}</p>
+          </div>
+          <div class="time">
+            <i class="fa-regular fa-clock"></i>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <img class="movie_img" src="{{f.image}}">
+    </div>
+   {% endfor %}
+  </div>

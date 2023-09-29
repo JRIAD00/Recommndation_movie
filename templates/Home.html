@@ -1,33 +1,192 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Page d'accueil</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-</head>
-<body>
-    <h1 class="titre">Liste des Films</h1>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/partials/navbar.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/partials/modal_login.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/partials/modal_login_1.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/partials/modal_user.css' %}">
+      <title>Movies Website</title>
+      <!--<script src="{% static 'js/partials/modal_login.js' %}"></script>-->
+      <script src="{% static 'js/partials/modal_login_1.js' %}"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
 
-    <h2>Groupe 1</h2>
-    <ul>
-        {% for film in films1 %}
-            <li>{{ film.titre }} (Note: {{ film.note_moyenne }}, Votes: {{ film.nombre_votes }})</li>
-        {% endfor %}
-    </ul>
+    
+    <section>
+      {% include 'partials/navbar.html' %}
+      <!--<form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>-->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          {% for f in films1 %}
+          <div class="swiper-slide">
+            <div class="image">
+              <div class="black">
+                <h1>Death on the Nile</h1>
+                <div class="star">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half-stroke"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <p>
+                  {{f.description}}
+                </p>
+                <div class="genre">
+                  {% for g in f.genres.all %}
+                  <a href="#" class="category">{{g}}</a>
+                  {% endfor %}
+                </div>
+              </div>
+              <img src="{{f.image}}">
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
 
-    <h2>Groupe 2</h2>
-    <ul>
-        {% for film in films2 %}
-            <li>{{ film.titre }} (Note: {{ film.note_moyenne }}, Votes: {{ film.nombre_votes }})</li>
-        {% endfor %}
-    </ul>
+    <div class="second">
+      <div class="latest">
+        <div class="clustering-container" >
+          <h1>Popular Movies</h1>
+          <a class="clustering-btn" href="{% url 'cluster' %}"  >Classifier</a>
+        </div>
+        
 
-    <h2>Groupe 3</h2>
-    <ul>
-        {% for film in films3 %}
-            <li>{{ film.titre }} (Note: {{ film.note_moyenne }}, Votes: {{ film.nombre_votes }})</li>
-        {% endfor %}
-    </ul>
-</body>
+        <div class="box">
+          {% for f1 in films2 %}
+          <div class="card" id="card" data-film-title="{{f1.titre}}">
+            <div class="details">
+              <div class="left">
+                <p class="name">{{f1.titre}}</p>
+                <div class="date_quality">
+                  <p class="quality">HD</p>
+                  <p class="date">2023</p>
+                </div>
+                <p class="category">
+                   {% for g in f1.genres.all %}
+                     <span>{{g}}</span>
+                   {% endfor %}
+                </p>
+                <div class="info">
+                  <div class="rate">
+                    <i class="fa-solid fa-star"></i>
+                    <p>{{f1.note_moyenne}}</p>
+                  </div>
+                  <div class="time">
+                    <i class="fa-regular fa-clock"></i>
+                    <p>120min</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img src="{{f1.image}}">
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="show">
+      <div class="tv_show">
+        <h1>World Best Movies</h1>    
+
+        <div class="box">
+          {% for f2 in films3%}
+          <div class="card" data-film-title="{{f2.titre}}">
+            <div class="details">
+              <div class="left">
+                <p class="name">{{f2.titre}}</p>
+                <div class="date_quality">
+                  <p class="quality">HD</p>
+                  <p class="date">{{f2.date_sortie}}</p>
+                </div>
+                <p class="category">
+                  {% for g in f2.genre.all %}
+                     <span>{{g}}</span>
+                  {% endfor %}
+                </p>
+                <div class="info">
+                  <div class="rate">
+                    <i class="fa-solid fa-star"></i>
+                    <p>{{f2.note_moyenne}}</p>
+                  </div>
+                  <div class="time">
+                    <i class="fa-regular fa-clock"></i>
+                   <!-- <p>120min</p>-->
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                <i class="fa-solid fa-play homepage" data-homepage="{{f2.homepage}}"></i>
+              </div>
+            </div>
+            <img src="{{f2.image}}">
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+     
+
+    {% include 'partials/modal_login.html' %}
+    {% include 'partials/modal_login_1.html' %}
+    {% include 'partials/modal_user.html' %}
+
+    <p class="end">Design By<span><i class="fa-solid fa-face-grin"></i>ImadWX</span></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper --
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>-->
+    <script>
+       var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+           loop: true,
+           autoplay: {
+               delay: 5000, // Le temps en millisecondes entre chaque transition
+               disableOnInteraction: false, // Laisser l'autoplay continuer même si l'utilisateur interagit avec le carrousel
+            },
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+    
+  </body>
 </html>

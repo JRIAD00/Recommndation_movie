@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Détails du Film</title>
+</head>
+<body>
+
+
+  <div >
+    <div className="modal" id='modal'>
+      <div className="modalLogo_info_container" >
+          <h2 className="modalLogo" >Login</h2>
+          <span className='modalInfo' >Hey, Enter your details to get sign in and join us</span>
+      </div>
+      <div className='loginOption_container' >
+        <div className='logSubContainers servicesLog_container' >
+          <button className= "servicesLogin" >
+            <div className='servicesLog_name' >
+              <span >Continue with Google</span>
+            </div>
+          </button>
+          <button className= "servicesLogin" >
+            <div className='servicesLog_name' >
+              <span >Continue with Facebook</span>
+            </div>
+          </button>
+        </div>
+        <div className='logSubContainers OR_container' >
+          <div className='or_line' >
+          <span className='or' >Or</span>
+          <div className='or_line' >
+        </div>
+        <div className='logSubContainers emailLog_container' >
+          <div className='input_container' >
+            <input 
+              type="text" 
+              placeholder="Enter email" 
+            />
+          </div>
+          <div className='input_container' >
+            <input 
+              type="password" 
+              placeholder="Enter password" 
+            />
+          </div>
+          <button className= "emailLog_button" >
+            <span >Sign in</span>
+          </button>
+          <div className='newAcc' >
+            Don't have an account?<span >Register now</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="bg">
+  </div>
+    
+  
+  
+</body>
+<style>
+
+.modal{  
+    z-index: 9999;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 0%;
+    padding:30px 30px 10px 30px;
+    border-radius: 0px 10px 10px 0;
+    background-color: #fff;
+    transition: all ease 0.5s;
+}
+
+.openModal{
+    height: 70%;
+}
+
+.bg{
+    z-index: 9998;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.modal_close_icon{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    cursor: pointer;
+}
+@media (max-width: 642px){
+    .modal{
+        min-width: 80%;
+        min-height: 50%;
+    }
+}
+.modalLogo_info_container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* background-color: red; */
+}
+.modalLogo{
+    font-weight: bold;
+    margin: 0;
+}
+.modalInfo{
+    font-size: 14px;
+    color: #888;
+    margin-top: 8px;
+}
+
+.loginOption_container{
+    display: flex;
+    margin-top: 8px;
+}
+.logSubContainers{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.servicesLog_container{
+    width: 45%;
+    /* background-color: red; */
+}
+.servicesLogin{
+    border: 0.5px solid #888 ;
+    border-radius: 15px;
+    width: 50%;
+    padding: 6px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    cursor: pointer;
+}
+.servicesLog_name{
+    width: calc( 100% - 22px );
+    padding: 2.5%;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.OR_container{
+    width: 10%;
+    /* background-color: yellow; */
+}
+.or_line{
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.38);
+    height: 20%;
+}
+.or{
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.38);
+    margin: 12px 0;
+}
+
+.emailLog_container{
+    width: 45%;
+    /* background-color: green; */
+}
+.input_container{
+    padding: 10px;
+    border: 0.5px solid #888 ;
+    border-radius: 15px;
+    width: 50%;
+    margin: 8px 0;
+}
+.input_container input{
+    font-size: 15px;
+    width: 100%;
+    color: #000;
+    border: 0;
+    padding: 5px;
+    outline: none;
+}
+.emailLog_button{
+    border: 0.5px solid transparent ;
+    color: #fff;
+    border-radius: 15px;
+    width: calc( 50% + 20px );
+    padding: 12px;
+    background-color: #003fae;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 18px 0 8px 0;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.emailLog_button:hover{
+    background-color: rgba(0, 0, 255, 0.938);
+}
+.newAcc{
+    font-size: 14px;
+    color: #0040aec5;
+}
+.newAcc span{
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+</style>
+</html>

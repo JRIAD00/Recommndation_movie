@@ -1,0 +1,146 @@
+
+
+.modal_login{
+    z-index: 9999;
+    position: fixed;
+    height: 0%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding:30px ;
+    transition: all ease 0.5s;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+
+
+  .openModal{
+    height: 70%;
+    display: flex;
+  }
+  
+  
+  .bg{
+    z-index: 9998;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+  .modal_login .close{
+    position: absolute;
+    top:3%;
+    left:98%;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+
+  .modal_container_sec1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   /* background-color: blue;*/
+    padding: 40px;
+  }
+  
+  .modal_container_soc{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 200px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #ccc; /* Épaisseur de la bordure de 2 pixels */
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  /* Pour ajouter un effet de survol */
+  .modal_container_soc:hover {
+    border-color: #007bff;/* Couleur de fond lorsque survolé */
+  }
+  
+  .modal_container_soc i{
+    margin-right: 15px;
+  }
+  
+  .modal_container_or{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .vertical-ligne {
+  width: 2px; /* Largeur de la ligne */
+  height: 100px; /* Hauteur de la ligne */
+  background-color: #000; /* Couleur de la ligne */
+  margin: 0 auto; /* Centrer la ligne horizontalement */
+  }
+  
+  
+  .modal_container_signUp{
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+  
+  }
+  
+  .modal_container_signUp input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    max-height: 40px; /* Limitez la hauteur de l'input */
+  }
+  
+  .modal_container_signUp span a{
+   
+    border-bottom: 1px solid #000;
+    cursor: pointer;
+  }
+  
+  /* Style pour les placeholders des inputs */
+  .modal_container_signUp input::placeholder {
+        color: #999;
+  }
+
+  #error-message{
+    font-size: 10px;
+    margin-bottom: 10px;
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* Style pour les inputs en focus (lorsqu'ils sont sélectionnés) */
+  .modal_container_signUp input:focus {
+     border-color: #007bff;
+     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Style pour le bouton "S'inscrire" */
+  .modal_container_signUp button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  /* Style pour le bouton "S'inscrire" au survol */
+  .modal_container_signUp button[type="submit"]:hover {
+   background-color: #0056b3;
+  }

@@ -1,0 +1,160 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Website</title>
+    <link rel="stylesheet" href="{% static 'movie.css' %}">
+    <link rel="stylesheet" href="{% static 'css/partials/cluster_partial.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/partials/modal_info_film.css'  %}">
+    <link rel="stylesheet" href="{% static 'css/partials/navbar.css'  %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/partials/modal_user.css' %}">
+    <script src="{% static 'js/partials/modal_info_film.js '%}"></script>
+    <script src="{% static 'js/partials/modal_login_1.js '%}"></script>
+    <script src="{% static 'js/partials/modal_user.js '%}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+
+    <section>
+      <section>
+        {% include 'partials/navbar.html' %}
+      </section>
+    </section>
+    
+    <section class="container" >
+      <div class="movie_film" >
+        <div class="movie_img_1" >
+          <img src="{{film.image}}" />
+        </div>
+        <div class="movie_details_1" > 
+          <p class="movie_title_1" >{{film.titre}}</p>
+          <div class="movie_info_1" >
+            <div class="date_quality_1">
+              <p class="quality_1">HD</p>
+              <p class="date_1">{{film.date_sortie}}</p>
+            </div>
+            <p class="movie_info_mid_1" >•</p>
+            <div class="rate_1">
+              <i class="fa-solid fa-star"></i>
+              <p>{{film.note_moyenne}}</p>
+            </div>
+            <p class="movie_info_mid_1" >•</p>
+            <div class="time_1">
+              <i class="fa-regular fa-clock"></i>
+              <p>120min</p>
+            </div>
+            <p class="movie_info_mid_1" >•</p>
+            <p class="movie_cat_1" >
+              {% for g in film.genres.all %}
+                  <span>{{g}}</span>
+              {% endfor %}
+            </p>
+          </div>
+          <div class="movie_desc_1" >
+              {{film.description}}
+          </div>
+          <div class="movie_homepage" >
+              <a href="{{film.homepage}}" class="watch-link" >Go watch</a>
+           </div>
+        </div>
+      </div>
+     <!-- <div class="avis_container" >
+        {% for comm in commentaires%}
+        <div class="avis" >
+          <div class="avis_user" >
+            <p>{{comm.user.username}}</p>
+          </div>
+          <p class="avis_text" >{{comm.text}}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="modal_avis_container" id="modal_avis_container" >
+        <div class="modal_avis_container_1" id="modal_avis_container_1">
+        <!--<div class="modal_avis"  id="modal_avis" >
+          <div class="modal_avis_user" >
+            <p>user 1</p>
+            <i class="fa-solid fa-star modal_active_star"></i><i class="fa-solid fa-star modal_active_star"></i><i class="fa-solid fa-star modal_active_star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="modal_avis_text" >user 1 comment user 1 comment user 1 comment user 1 comment user 1 comment user 1 comment</p>
+        </div>-->
+        </div>
+
+       <!-- <form  class="form_comm" id="form_comm"  data-id="{{film.id}}"  method="POST">
+          {% csrf_token %}
+          <span id="error_comm" style="color: red;"></span>
+          <p class="modal_addAvis_title" >Add your review</p>
+          <div style="display: flex; gap: 16px;" >
+            <input type="text"  id="user_name" name="username" placeholder="Full Name" class="modal_input" />
+            <input type="number" id="Nb_star" placeholder="Number of stars" class="modal_input"  />
+          </div>
+          <textarea placeholder="What are your thoughts ?" class="modal_input" id="commentaire" ></textarea>
+          <div style="display: flex; justify-content: flex-end;" >
+            <button class="modal_addAvis_btn" type="submit" >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>-->
+    </section>
+    
+
+    <div class="second scrollable-content ">
+      <h1 class="cluster-title" >Films similaires</h1>
+        {% include 'partials/cluster_partial.html' with cluster_data=similar_films %}
+      </div>
+  
+
+    {% include 'partials/modal_info_film.html' %}
+
+    {% include 'partials/modal_user.html' %}
+   
+
+    <p class="end">Design By<span><i class="fa-solid fa-face-grin"></i>ImadWX</span></p>
+    
+  </body>
+
+
+  <script>
+
+     // Sélectionnez tous les éléments de films similaires (vous devrez adapter le sélecteur à votre structure HTML)
+    // var similarFilmElements = document.querySelectorAll('.similar-film');
+
+      // Ajoutez un gestionnaire d'événements de clic à chaque élément de film similaire
+    // similarFilmElements.forEach(function (similarFilmElement) {
+    // similarFilmElement.addEventListener('click', function () {
+
+    //              var filmId=similarFilmElement.getAttribute('data-film-id');
+    //              fetch("/get_film_data/" + filmId + "/")
+    //             .then(function(response) {
+    //                return response.json();
+    //              })
+    //             .then(function(filmdata) {
+    //                  var filmTitle=filmdata.titre;
+
+                      // Encodez le titre du film pour l'URL (remplacer les espaces par des tirets, par exemple)
+    //                  var encodedFilmTitle = encodeURIComponent(filmTitle);
+
+                      // Construisez l'URL de redirection avec le titre encodé en tant que paramètre
+    //                  var redirectURL = '/Cluster/' + encodedFilmTitle ;
+
+                      // Redirigez l'utilisateur vers la page de détails du film
+    //                   window.location.href = redirectURL;
+
+    //              })
+    //             .catch(function(error) {
+    //                 console.error('Erreur :', error);
+    //             });
+
+    // });
+   // });
+   
+
+
+
+
+  </script>
+</html>

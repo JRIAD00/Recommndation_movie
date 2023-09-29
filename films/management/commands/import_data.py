@@ -7,7 +7,7 @@ import pandas as pd
 import os
 from decimal import Decimal
 from ast import literal_eval
-from films.models import Film,Genre,Acteur,Realisateur,PaysProduction,LangueParlee,MotCle
+from films.models import Film,Genre,Acteur,Realisateur,PaysProduction,LangueParlee,MotCle,UserProfile_2,Comment
 
 
 cat=['Action','Adventure','crime','comedy','Horror','Romance','Thriller']
@@ -133,55 +133,57 @@ class Command(BaseCommand):
         for param in params:
             data[param] = data[param].apply(cleanDf)  # Utilisez votre fonction de nettoyage ici
         
-        data=data.head(100)
-        print(data)
+        data=data.head(200)
+
+        
+
+        
+        create_objet_acteurs(acteurs_list(data))
+        create_objet_pays(pays_list(data))
+        create_objet_language(langue_list(data))
+        create_objet_genre(genre_list(data))
+        #Film.objects.all().delete()
+        #Acteur.objects.all().delete()
+        #Genre.objects.all().delete()
+        #LangueParlee.objects.all().delete()
+        #PaysProduction.objects.all().delete()
+        #UserProfile_2.objects.all().delete()
+        #Comment.objects.all().delete()
         data['year'] = data['release_date'].str.split('-').str[0]
-        idx=data[data['title']=='Spider-Man 3'].index[0]
+
         # Convertir la colonne 'year' en entiers
         data['year'] = pd.to_numeric(data['year'], errors='coerce')
-       # create_objet_acteurs(acteurs_list(data))
-        #create_objet_pays(pays_list(data))
-       # create_objet_language(langue_list(data))
-        #create_objet_genre(genre_list(data))
-        #Film.objects.all().delete()
-       # Acteur.objects.all().delete()
-       # Genre.objects.all().delete()
-       # LangueParlee.objects.all().delete()
-        #PaysProduction.objects.all().delete()
-         # Récupérez l'objet Film avec le titre "Inception"
-        film_inception = Film.objects.get(titre='Spider-Man 3')
-
-        # Accédez aux acteurs du film
-        acteurs_spider_man = film_inception.acteurs.all()
- 
         # Parcourez et affichez les noms des acteurs
         #for acteur in acteurs_spider_man:
         #      print(acteur.nom)
-        #for index,row in data.iterrows():
-             # print(type(row['actors']))
+        for index,row in data.iterrows():
+        #     # print(type(row['actors']))
                 # Créez un objet Realisateur avec le nom du réalisateur
-        #        realisateur, created = Realisateur.objects.get_or_create(nom=row['director'])
-         #       film=Film()
-         #       film.titre=row['title']
-         #       film.note_moyenne=row['vote']
-          #      film.nombre_votes=int(row['vote_count'])
-          #      film.description=row['description']
-          #      film.image=row['img']
-          #      film.date_sortie=int(row['year'])
-          #      film.realisateur=realisateur
+            if row['img'] != '0':
+        #        print(row['img'])
+                realisateur, created = Realisateur.objects.get_or_create(nom=row['director'])
+                film=Film()
+                film.titre=row['title']
+                film.note_moyenne=row['vote']
+                film.nombre_votes=int(row['vote_count'])
+                film.description=row['description']
+                film.image=row['img']
+                film.homepage=row['homepage']
+                film.date_sortie=int(row['year'])
+                film.realisateur=realisateur
 
-           #     genres = [Genre.objects.get_or_create(nom=categorie)[0] for categorie in row['categories']]
-           #     pays = [PaysProduction.objects.get_or_create(nom=countrie)[0] for countrie in row['countrie']]
-           #     languages = [LangueParlee.objects.get_or_create(nom=lang)[0] for lang in row['languages']]
-           #     acteurs=[Acteur.objects.get_or_create(nom=act)[0] for act in row['actors']]
+                genres = [Genre.objects.get_or_create(nom=categorie)[0] for categorie in row['categories']]
+                pays = [PaysProduction.objects.get_or_create(nom=countrie)[0] for countrie in row['countrie']]
+                languages = [LangueParlee.objects.get_or_create(nom=lang)[0] for lang in row['languages']]
+                acteurs=[Acteur.objects.get_or_create(nom=act)[0] for act in row['actors']]
                 
-            #    film.save()
+                film.save()
                  #Associez les objets Genre au film
-           #     self.stdout.write(self.style.SUCCESS(f'Film importé avec succès : {film.titre}'))
-           #     film.genres.set(genres)
-           #     film.pays_production.set(pays)
-           #     film.langues_parlees.set(languages)
-            #    film.acteurs.set(acteurs)
+                self.stdout.write(self.style.SUCCESS(f'Film importé avec succès : {film.titre}'))
+                film.genres.set(genres)
+                film.pays_production.set(pays)
+                film.langues_parlees.set(languages)
+                film.acteurs.set(acteurs)
         
 
 #Index(['homepage', 'id', 'keywords', 'original_language', 'description',       

@@ -1,0 +1,38 @@
+
+
+
+<div>
+    <!--<button id="openModalbutton">ouvre</button>-->
+    <div class="bg"></div>
+    <div class="modal_login">
+        <i class="fa-solid fa-times close " id="closeModalButton" ></i>
+
+            <div class="modal_container_sec1">
+                <div class="modal_container_soc">
+                    <img src="../static/images/icons8-google-48.png" alt="Google Icon" style="margin-right: 14px; width: 20%;">
+                    <span style="margin-left: 14px;">Google</span>
+                </div>
+                <div class="modal_container_soc facebook">
+                    <img src="../static/images/icons8-facebook-48.png" alt="Google Icon" style=" margin-right: 14px;width: 20%;">
+                    <span>Facebook</span>
+                </div>
+            </div>
+            <div class="modal_container_or">
+                <span class="vertical-ligne"></span>
+                <span>or</span>
+                <span class="vertical-ligne"></span>
+            </div>
+            <form class="modal_container_signUp" id="modal_container_signUp" method="POST" action="{% url 'signup_view' %}">
+                {% csrf_token %}
+                <span id="error-message" class="error-message"></span>
+                <input type="text" id="username" placeholder="Enter your name"/>
+                <input type="email" id="email" placeholder="Enter your email" />
+                <input type="password" id="password" placeholder="Enter your password">
+                <input type="password" id="confirm-password" placeholder="confirm your password"/>
+                <button type="submit">s'inscrire</button>
+                <span style="margin-top: 5px;">you have account?<a id="signIn">Sign in</a></span>
+            </form>
+
+
+    </div>
+</div>
