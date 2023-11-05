@@ -39,6 +39,9 @@ def recommendation_utilisateur(favourites_film):
 
 def home(request):
     # Vérifiez si l'utilisateur est connecté
+    users=User.objects.all()
+    for u in users:
+        print(u.password)
     recommended_films=None
     if request.user.is_authenticated:
         # Faites ce que vous voulez avec le nom d'utilisateur ou d'autres attributs de l'utilisateur
